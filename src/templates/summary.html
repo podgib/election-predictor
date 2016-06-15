@@ -1,0 +1,13 @@
+{% extends 'templates/layout.html' %}
+
+{% block content %}
+
+    <h1>Ready To Poll</h1>
+
+    <table>
+    <tr><th>Party</th><th>Seats</th></tr>
+    {% for party in parties %}
+    <tr><td>{{ party.name }}</td><td>{{ party.num_seats }}</td></tr>
+    {% endfor %}
+    </table>
+{% endblock %}

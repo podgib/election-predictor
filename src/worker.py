@@ -1,11 +1,17 @@
 import logging
 import webapp2
 from google.appengine.ext import ndb
+from google.appengine.api import taskqueue
 from scraper.scraper import Scraper
 from models.seat import Seat
 from models.party import Party
 from models.price import Price
 from models import party
+
+class StartScrape(webapp2.RequestHandler):
+  def get(self):
+    taskqueue.add(url='/worker/scrape',countdown=1)
+    self.response.out.write('Queued scrape handler')
 
 class ScrapeRunner(webapp2.RequestHandler):
   def get(self):
@@ -50,8 +56,10 @@ class ScrapeRunner(webapp2.RequestHandler):
       else:
         party.num_seats = 0
       party.put()
+
     self.response.out.write(winners)
 
 app = webapp2.WSGIApplication([
+  ('/worker/start', StartScrape),
   ('/worker/scrape', ScrapeRunner)
 ], debug=True)
