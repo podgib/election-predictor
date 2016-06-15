@@ -1,0 +1,4 @@
+cron:
+- description: Daily scrape of odds
+  url: /worker/scrape
+  schedule: every 24 hours
