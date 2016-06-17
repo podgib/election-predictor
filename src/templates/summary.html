@@ -4,10 +4,39 @@
 
     <h1>Ready To Poll</h1>
 
-    <table>
+    <table id="parties">
     <tr><th>Party</th><th>Seats</th></tr>
     {% for party in parties %}
     <tr><td>{{ party.name }}</td><td>{{ party.num_seats }}</td></tr>
     {% endfor %}
     </table>
+
+    <div id="disclaimer">
+        <h2>ABOUT + DISCLAIMER</h2>
+        <p>
+            We were interested in what the individual seat betting markets were predicting for the 2016
+            Australian election but couldn’t find a site with an easy summary.
+            So, <a href="https://twitter.com/podgib">Geoff</a> made one.
+            <a href="https://twitter.com/rtilleard">Robbie</a> looked over his shoulder, not doing much.
+        </p>
+
+        <p>
+            The predicted seats are taken from the Sportsbet odds for individual seats every day at 4am AEST.
+            We assign a win to the candidate with the lowest odds for each seat.
+            That’s all. Nothing more complex than that.
+        </p>
+
+        <p>
+            In 2013, seat betting markets over predicted the number of Labor losses.
+            Reasons for this can be found on <a href="https://electionlab.wordpress.com/">election lab</a>.
+            Basically, don’t take the result as gospel.
+            Like us though, you might find it another interesting data point in the lead-up to July 2.
+        </p>
+
+        <p>
+            Sometimes seats disappear from Sportsbet, so there may be fewer than 150 seats shown some days.
+        </p>
+
+        <p>Happy polling.</p>
+    </div>
 {% endblock %}
